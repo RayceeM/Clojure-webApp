@@ -18,3 +18,9 @@
 (use 'guestbook.models.db)
 (jdbc/insert! db-spec :fruit {:name "Pear" :appearance "green" :cost 99})
 (use 'guestbook.models.db)
+{:rachael}
+(use 'guestbook.models.db)
+(ns-unmap 'user 'save-message)
+(use 'guestbook.models.db)
+(save-message "raycee" "fire")
+(read-guests)

@@ -14,7 +14,7 @@
        [:name "TEXT"] 
        [:message "TEXT"]]))
 
-(defn create-guestbook-table-1 []
+(defn create-guestbook-table []
   (sql/db-do-commands db
                      [guestbook-table-ddl
                       "CREATE INDEX timestamp_index ON guestbook(timestamp)"]))
@@ -31,8 +31,8 @@
 ;     (sql/db-do-commands "CREATE INDEX timestamp_index ON guestbook(timestamp)")))
 
 (defn read-guests []
-(sql/query db-spec ["SELECT * FROM guestbook ORDER BY timestamp DESC"]))
+(sql/query db ["SELECT * FROM guestbook ORDER BY timestamp DESC"]))
 
 (defn save-message[name message]
-(sql/insert! db-spec :guestbook {:name :message :timestamp}
+(sql/insert! db :guestbook [:name :message :timestamp]
 [name message (new java.util.Date)]))
